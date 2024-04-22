@@ -1,5 +1,9 @@
 //estilos definitivos
 export const theme = {
+  appBar: {
+    primary: '#24292e',
+    textPrimary: '#FFF'
+  },
   colors: {
     textprimary: '#24292e',
     textSecondary: '#586069',

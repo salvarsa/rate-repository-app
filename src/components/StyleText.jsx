@@ -1,6 +1,6 @@
 import React, { Children } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import {theme} from '../theme.js';
+import {theme} from '../theme';
 
 const styles = StyleSheet.create({
   text: {

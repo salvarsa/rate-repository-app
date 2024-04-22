@@ -10,8 +10,8 @@ const RepositoryItemHeader = ({ownerAvatarUrl, fullName, description, language})
     <Image style={styles.image} source={{ uri: ownerAvatarUrl }}/>
     </View>
     <View style={{ flexGrow: 1}}>
-      <StyleText fontSize="subheading" fontWeight="bold">{' '}{fullName}{' '}</StyleText>
-      <StyleText>{description}</StyleText>
+      <StyleText fontWeight="bold">{fullName}</StyleText>
+      <StyleText color='secondary'>{description}</StyleText>
       <StyleText style={styles.language}>{language}</StyleText>
     </View>
   </View>
@@ -32,14 +32,14 @@ const styles = StyleSheet.create({
   },
   constainer: {
     padding: 20,
-    paddingBottom: 5,
-    paddingTop: 20,
+    paddingVertical: 5,
   },
   language: {
     padding: 4,
     color: theme.colors.white,
     backgroundColor: theme.colors.primary,
     alignSelf: 'flex-start',
+    marginVertical: 4,
     borderRadius: 4,
     overflow: 'hidden',
   },
