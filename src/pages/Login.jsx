@@ -12,7 +12,10 @@ const initialValues = {
 
 const styles = StyleSheet.create({
     error:{
-        color: 'red'
+        color: 'red',
+        fontSize: 12,
+        marginBottom: 20,
+        marginTop: -5
     },
     form: {
         margin: 12
@@ -24,6 +27,7 @@ const FormikInputValue = ({name, ...props}) => {
     return (
         <>
         <StyledTextInput
+        error={meta.error}
               value={field.value}
               onChangeText={value => helpers.setValue(value)}
               {...props}
