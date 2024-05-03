@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Button, StyleSheet } from "react-native";
+import { View, Button, StyleSheet, TextInput } from "react-native";
 import { Formik, useField } from "formik";
 import StyledTextInput from './../components/StyledTextInput.jsx'
+import StyleText from "../components/StyleText.jsx";
 
 
 const initialValues = {
@@ -10,20 +11,35 @@ const initialValues = {
 }
 
 const styles = StyleSheet.create({
+    error:{
+        color: 'red'
+    },
     form: {
         margin: 12
     }
 })
 
-const FormikImputValue = ({name, ...props}) => {
+const FormikInputValue = ({name, ...props}) => {
     const [field, meta, helpers] = useField(name)
     return (
+        <>
         <StyledTextInput
               value={field.value}
               onChangeText={value => helpers.setValue(value)}
               {...props}
             />
+            {meta.error && <StyleText style={styles.error}>{meta.error}</StyleText>}
+            </>
     )
+}
+
+const validate = values => {
+    const errors = {}
+    if (!values.email){
+        errors.email = 'email is required'
+    }else if (!/^[A-Z0-9._%+-]+@[A-Z0-9 -]+\.[A-Z]{2,4}$/i.text(values.email)){
+        errors.email = 'Invalid email address'
+    }
 }
 
 export default function LoginPage() {
@@ -35,11 +51,12 @@ export default function LoginPage() {
       {({ handleSubmit }) => {
         return (
           <View style={styles.form}>
-            <FormikImputValue
+            <FormikInputValue
               name='email'
               placeholder="Email"
+              placeholderTextColor='red'
             />
-            <FormikImputValue
+            <FormikInputValue
               name='password'
               placeholder="Password"
               secureTextEntry
@@ -48,7 +65,7 @@ export default function LoginPage() {
               Login
             </Button>
           </View>
-        );
+        )
       }}
     </Formik>
   );
